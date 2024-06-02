@@ -1,8 +1,26 @@
-import { Bot } from "https://deno.land/x/grammy@v1.24.0/mod.ts";
+import { Bot, Keyboard } from "https://deno.land/x/grammy@v1.24.0/mod.ts";
+import { Menu } from "https://deno.land/x/grammy_menu@v1.2.1/mod.ts";
 
-export const bot = new Bot("7013563671:AAEPqPGu-J_GVdthbiJDWdxWopPUyxAQAvE"); // <-- put your bot token between the ""
+export const bot = new Bot("7377106182:AAGOS0_xvyFiG8eU8zTtb6Cde3hjB41Z7Wc"); // old(aron) => 7013563671:AAEPqPGu-J_GVdthbiJDWdxWopPUyxAQAvE
 
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
-bot.command("ready", (ctx) => ctx.reply("Hello!"));
+// Build a custom keyboard:
+const keyboard = new Keyboard()
+    .text('Join our community').text('Invite Friends').row()
+    .text('Register').text('Back')
 
-bot.start()
+bot.on(":text", async (ctx) => {
+    // console.log(ctx);
+    const message = ctx.message; // the message object
+    if (!message) return;
+    if (message.text === "Join our community") return await ctx.reply("Click here to join our main channel: https://t.me/davidosod");
+
+});
+
+
+
+bot.command("start", async (ctx) => {
+    // Send the menu.
+    await ctx.reply("Welcome to our bot", { reply_markup: keyboard });
+});
+
+bot.start();
