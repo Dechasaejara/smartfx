@@ -9,27 +9,31 @@ const keyboard = new Keyboard()
 
 
 bot.command("start", async (ctx) => {
-    console.log(ctx);
     const user = ctx.message?.from.first_name; // the message object
     // Send the menu.
-    await ctx.reply(`Welcome to SmartFx ${user}`, { reply_markup: keyboard });
+    await ctx.reply(`Welcome to SmartFx bot `, { reply_markup: keyboard });
 });
 
 bot.on(":text", async (ctx) => {
-    console.log(ctx);
-    const user = ctx.message?.from.first_name; //
     const message = ctx.message; // the message object
     if (!message) return;
 
     if (message.text === "Join our community") {
-        return await ctx.reply("Click here to join our main channel:    https://t.me/davidosod");
+        return await ctx.reply("Click here to join our main channel:    https://t.me/davidosod", { reply_markup: keyboard });
     }
     if (message.text === "Invite Friends") {
-        return await ctx.reply("Click here to invite your friends:    https://t.me/davidosod");
+        return await ctx.reply("Click here to invite your friends:    https://t.me/davidosod", { reply_markup: keyboard });
     }
     if (message.text === "Register and get 300 Birr reward") {
-        return await ctx.reply("Enter your bank account to get 300 Birr reward");
+
+        return await ctx.reply("Enter your bank account to get 300 Birr reward", { reply_markup: keyboard });
     }
+    if (message.text.length >= 10) {
+        return await ctx.reply("Thankyou to register this bot", { reply_markup: keyboard });
+    } else {
+        return await ctx.reply("Invalid account, please try again!", { reply_markup: keyboard });
+    }
+
 });
 
 bot.start();
