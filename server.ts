@@ -1,8 +1,5 @@
-import { serve } from "https://deno.land/std@0.154.0/http/server.ts";
 
 import { Bot } from "https://deno.land/x/grammy@v1.24.0/mod.ts";
-import { webhookCallback } from "../smartfx/deps.deno.ts";
-
 
 // Create an instance of the `Bot` class and pass your bot token to it. 
  export const bot = new Bot("7013563671:AAEPqPGu-J_GVdthbiJDWdxWopPUyxAQAvE"); // <-- put your bot token between the ""
@@ -29,21 +26,11 @@ bot.start();
 
 
 
+const port = 8080;
+const handler = (request: Request): Response => {
+  const body = `Hello from Deno server!`;
+  return new Response(body, { status: 200 });
+};
 
-
-
-
-const handleUpdate = webhookCallback(bot, "std/http");
-serve(async (req) => {
-  if (req.method == "POST") {
-    const url = new URL(req.url);
-    if (url.pathname.slice(1) == bot.token) {
-      try {
-        return await handleUpdate(req);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }
-  return new Response();
-});
+console.log(`HTTP server running. Access it at: http://localhost:${port}/`);
+Deno.serve({ port }, handler);
