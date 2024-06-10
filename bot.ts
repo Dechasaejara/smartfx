@@ -19,10 +19,10 @@ bot.on(":text", async (ctx) => {
     if (!message) return;
 
     if (message.text === "Join our community") {
-        return await ctx.reply("Click here to join our main channel:    https://t.me/davidosod", { reply_markup: keyboard });
+        return await ctx.reply("Click here to join our main channel:    https://t.me/+5IyRGnhrSvcxNmU0", { reply_markup: keyboard });
     }
     if (message.text === "Invite Friends") {
-        return await ctx.reply("Click here to invite your friends:    https://t.me/davidosod", { reply_markup: keyboard });
+        return await ctx.reply("Click here to invite your friends:    https://t.me/+5IyRGnhrSvcxNmU0", { reply_markup: keyboard });
     }
     if (message.text === "Register and get 300 Birr reward") {
 
