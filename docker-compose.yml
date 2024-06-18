@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      BOT_TOKEN: "7377106182:AAGOS0_xvyFiG8eU8zTtb6Cde3hjB41Z7Wc"

@@ -12,7 +12,6 @@ RUN deno cache mod.ts
 
 # Set the environment variables
 ENV BOT_TOKEN="7377106182:AAGOS0_xvyFiG8eU8zTtb6Cde3hjB41Z7Wc"
-#ENV WEBHOOK_SECRET=<your_webhook_secret>
 
 # Expose the port
 EXPOSE 8000
