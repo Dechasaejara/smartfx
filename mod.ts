@@ -37,3 +37,6 @@ bot.on(":text", async (ctx) => {
 });
 
 bot.start();
+
+
+// docker run -e BOT_TOKEN="7377106182:AAGOS0_xvyFiG8eU8zTtb6Cde3hjB41Z7Wc" my-telegram-bot
